@@ -14,7 +14,7 @@ for i in range(len(input_list)):
     else:pass
 #定义端口测试函数
 def port_test(ip,port):
-    with open('results', 'w+') as results:
+    with open('G:/Documents/源代码/python/3.0/nagios/results', 'a') as results:
         try:
             sc=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
             sc.settimeout(0.5)
@@ -25,7 +25,7 @@ def port_test(ip,port):
         except socket.timeout:
             print(ip,':',port,':Fail')
             result = ip + ':' + str(port) + ':Fail' + '\n'
-            results.write(result)#写入结果的时候似乎会发生覆盖的问题，我对这个不太熟悉,还是文涛你看看吧
+            results.write(result)
         except:
             pass
 #依次对没每一个ip的每一个端口进行检查
